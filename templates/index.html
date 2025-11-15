@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Editor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎨 AI Image Editor</h1>
+            <div class="controls">
+                <button class="btn btn-image" onclick="addNode('image-input')" title="Thêm Image Input">
+                    <span>🖼️</span>
+                </button>
+                <button class="btn btn-ai" onclick="addNode('image-processor')" title="Thêm AI Processor">
+                    <span>🎨</span>
+                </button>
+                <button class="btn btn-output" onclick="addNode('image-output')" title="Thêm Image Output">
+                    <span>📤</span>
+                </button>
+                <button class="btn btn-warning" onclick="clearCanvas()" title="Xóa tất cả">
+                    <span>🗑️</span>
+                </button>
+            </div>
+            <div class="api-status" id="apiStatus">
+                <span>🔌 Đang kiểm tra...</span>
+            </div>
+        </header>
+        
+        <div class="layout">
+            <div class="workspace">
+                <svg id="connections" class="connections-layer"></svg>
+                <div id="canvas" class="canvas"></div>
+            </div>
+            <aside class="side-panel">
+                <section class="panel-section">
+                    <div class="section-header">
+                        <h2>🗂️ Lịch sử xử lý</h2>
+                        <button type="button" class="section-refresh" onclick="refreshJobHistory()" title="Làm mới">
+                            ↻
+                        </button>
+                    </div>
+                    <div id="jobHistory" class="history-content">
+                        <p class="history-placeholder">Chưa có lần xử lý nào.</p>
+                    </div>
+                </section>
+                <section class="panel-section">
+                    <div class="section-header">
+                        <h2>🖼️ Thư viện ảnh</h2>
+                        <button type="button" class="section-refresh" onclick="refreshAssetGallery()" title="Làm mới">
+                            ↻
+                        </button>
+                    </div>
+                    <div id="assetGallery" class="gallery-content">
+                        <p class="history-placeholder">Chưa có ảnh nào.</p>
+                    </div>
+                </section>
+            </aside>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
