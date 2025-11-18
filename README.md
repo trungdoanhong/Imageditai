@@ -156,3 +156,14 @@ Blockly/
 ## 📝 License
 
 MIT License
+
+## 🧾 Ví dụ đọc dữ liệu Notion
+
+Script `notion_fetch.py` minh họa cách lấy dữ liệu từ Notion Database bằng Python:
+
+1. Tạo Notion integration và copy token tại https://www.notion.so/my-integrations, sau đó chia sẻ database/page cần đọc cho integration đó.
+2. Cập nhật `.env`:
+   - `NOTION_API_KEY` – token vừa tạo.
+   - `NOTION_DATABASE_ID` – phần slug trong URL của database.
+3. Cài dependencies (đã có trong `requirements.txt`): `pip install -r requirements.txt`.
+4. Chạy `python notion_fetch.py`. Script sẽ gọi `databases.query`, tự động phân trang và in ra toàn bộ properties của từng dòng.

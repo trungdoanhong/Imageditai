@@ -46,11 +46,8 @@ if curl -s http://localhost:5000/api/health > /dev/null; then
     echo ""
     
     # Mở trình duyệt
-    APP_URL="http://localhost:5000"
-    echo "🌐 Đang mở trình duyệt (${APP_URL})..."
-    {
-        open "$APP_URL" 2>/dev/null || xdg-open "$APP_URL" 2>/dev/null
-    } || echo "Vui lòng mở $APP_URL trong trình duyệt"
+    echo "🌐 Đang mở trình duyệt..."
+    open index.html 2>/dev/null || xdg-open index.html 2>/dev/null || echo "Vui lòng mở index.html trong trình duyệt"
     
     echo ""
     echo "✨ Ứng dụng đã sẵn sàng!"
@@ -60,3 +57,4 @@ else
     kill $SERVER_PID 2>/dev/null
     exit 1
 fi
+
