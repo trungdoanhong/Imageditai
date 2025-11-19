@@ -99,7 +99,7 @@ def main() -> None:
 
     try:
         notion_token = require_env("NOTION_API_KEY")
-        database_id = require_env("NOTION_DATABASE2_ID")
+        database_id = require_env("NOTION_DATABASE_ID")
     except RuntimeError as err:
         print(f"❌ {err}")
         sys.exit(1)
@@ -119,16 +119,16 @@ def main() -> None:
         print("⚠️ Database is empty or you do not have access.")
         return
 
-    print(rows[0])
+    # print(rows[0])
 
-    # print(f"✅ Received {len(rows)} rows from Notion database {database_id}:\n")
-    # for index, row in enumerate(rows, start=1):
-    #     properties = row.get("properties", {})
-    #     simplified = {name: simplify_property(prop) for name, prop in properties.items()}
-    #     print(f"--- Row {index}: {page_title(properties)} ---")
-    #     for name, value in simplified.items():
-    #         print(f"{name}: {value}")
-    #     print()
+    print(f"✅ Received {len(rows)} rows from Notion database {database_id}:\n")
+    for index, row in enumerate(rows, start=1):
+        properties = row.get("properties", {})
+        simplified = {name: simplify_property(prop) for name, prop in properties.items()}
+        print(f"--- Row {index}: {page_title(properties)} ---")
+        for name, value in simplified.items():
+            print(f"{name}: {value}")
+        print()
 
 
 if __name__ == "__main__":
